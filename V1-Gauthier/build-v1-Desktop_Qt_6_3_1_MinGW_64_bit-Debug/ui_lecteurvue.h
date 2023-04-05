@@ -35,15 +35,15 @@ public:
     QVBoxLayout *verticalLayout;
     QFrame *frame;
     QSpacerItem *verticalSpacer;
-    QLabel *label_2;
-    QLabel *label;
-    QTextBrowser *textBrowser;
+    QLabel *lTitrePhoto;
+    QLabel *lCategorie;
+    QTextBrowser *AffichageTextePhoto;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_2;
+    QPushButton *bLancerDiapo;
+    QPushButton *bArreterDiapo;
     QSpacerItem *horizontalSpacer_3;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton;
+    QPushButton *bPrecedent;
+    QPushButton *bSuivant;
     QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -79,48 +79,48 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        label_2 = new QLabel(horizontalLayoutWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setAlignment(Qt::AlignCenter);
+        lTitrePhoto = new QLabel(horizontalLayoutWidget);
+        lTitrePhoto->setObjectName(QString::fromUtf8("lTitrePhoto"));
+        lTitrePhoto->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(label_2);
+        verticalLayout->addWidget(lTitrePhoto);
 
-        label = new QLabel(horizontalLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setAlignment(Qt::AlignCenter);
+        lCategorie = new QLabel(horizontalLayoutWidget);
+        lCategorie->setObjectName(QString::fromUtf8("lCategorie"));
+        lCategorie->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(lCategorie);
 
-        textBrowser = new QTextBrowser(horizontalLayoutWidget);
-        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        AffichageTextePhoto = new QTextBrowser(horizontalLayoutWidget);
+        AffichageTextePhoto->setObjectName(QString::fromUtf8("AffichageTextePhoto"));
 
-        verticalLayout->addWidget(textBrowser);
+        verticalLayout->addWidget(AffichageTextePhoto);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        pushButton_4 = new QPushButton(horizontalLayoutWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        bLancerDiapo = new QPushButton(horizontalLayoutWidget);
+        bLancerDiapo->setObjectName(QString::fromUtf8("bLancerDiapo"));
 
-        horizontalLayout_2->addWidget(pushButton_4);
+        horizontalLayout_2->addWidget(bLancerDiapo);
 
-        pushButton_2 = new QPushButton(horizontalLayoutWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        bArreterDiapo = new QPushButton(horizontalLayoutWidget);
+        bArreterDiapo->setObjectName(QString::fromUtf8("bArreterDiapo"));
 
-        horizontalLayout_2->addWidget(pushButton_2);
+        horizontalLayout_2->addWidget(bArreterDiapo);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
 
-        pushButton_3 = new QPushButton(horizontalLayoutWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        bPrecedent = new QPushButton(horizontalLayoutWidget);
+        bPrecedent->setObjectName(QString::fromUtf8("bPrecedent"));
 
-        horizontalLayout_2->addWidget(pushButton_3);
+        horizontalLayout_2->addWidget(bPrecedent);
 
-        pushButton = new QPushButton(horizontalLayoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        bSuivant = new QPushButton(horizontalLayoutWidget);
+        bSuivant->setObjectName(QString::fromUtf8("bSuivant"));
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(bSuivant);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -149,17 +149,17 @@ public:
     void retranslateUi(QMainWindow *LecteurVue)
     {
         LecteurVue->setWindowTitle(QCoreApplication::translate("LecteurVue", "LecteurVue", nullptr));
-        label_2->setText(QCoreApplication::translate("LecteurVue", "Titre de l'image", nullptr));
-        label->setText(QCoreApplication::translate("LecteurVue", "#Cat\303\251gorie", nullptr));
-        textBrowser->setHtml(QCoreApplication::translate("LecteurVue", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        lTitrePhoto->setText(QCoreApplication::translate("LecteurVue", "Titre de l'image", nullptr));
+        lCategorie->setText(QCoreApplication::translate("LecteurVue", "#Cat\303\251gorie", nullptr));
+        AffichageTextePhoto->setHtml(QCoreApplication::translate("LecteurVue", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Lorem ipsum </p></body></html>", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("LecteurVue", "LancerDiaporama", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("LecteurVue", "Arr\303\252ter Diaporama", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("LecteurVue", "Pr\303\251c\303\251dent", nullptr));
-        pushButton->setText(QCoreApplication::translate("LecteurVue", "Suivant", nullptr));
+        bLancerDiapo->setText(QCoreApplication::translate("LecteurVue", "LancerDiaporama", nullptr));
+        bArreterDiapo->setText(QCoreApplication::translate("LecteurVue", "Arr\303\252ter Diaporama", nullptr));
+        bPrecedent->setText(QCoreApplication::translate("LecteurVue", "Pr\303\251c\303\251dent", nullptr));
+        bSuivant->setText(QCoreApplication::translate("LecteurVue", "Suivant", nullptr));
     } // retranslateUi
 
 };

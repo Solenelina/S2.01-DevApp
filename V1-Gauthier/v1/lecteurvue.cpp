@@ -7,8 +7,14 @@ LecteurVue::LecteurVue(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QObject::connect(ui, SIGNAL(clicked()),
+    QObject::connect(ui->bSuivant , SIGNAL(clicked()),
                      this, SLOT(suivant()));
+    QObject::connect(ui->bPrecedent, SIGNAL(clicked()),
+                     this, SLOT(precedent()));
+    QObject::connect(ui->bLancerDiapo, SIGNAL(clicked()),
+                     this, SLOT(demarrerDiapo()));
+    QObject::connect(ui->bArreterDiapo, SIGNAL(clicked()),
+                     this, SLOT(arreterDiapo()));
 }
 
 LecteurVue::~LecteurVue()
@@ -26,12 +32,12 @@ void LecteurVue::precedent()
     qDebug() << "J'affiche l'image précédente" << Qt::endl;
 }
 
-void LecteurVue::DemarrerDiapo()
+void LecteurVue::demarrerDiapo()
 {
     qDebug()<<"Je démarre le diaporama" << Qt::endl;
 }
 
-void LecteurVue::ArreterDiapo()
+void LecteurVue::arreterDiapo()
 {
     qDebug()<<"J'arrete le diaporama" << Qt::endl;
 }

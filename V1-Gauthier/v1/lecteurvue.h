@@ -21,7 +21,7 @@ private:
 public slots :
     void precedent();
     void suivant();
-    void DemarrerDiapo();
-    void ArreterDiapo();
+    void demarrerDiapo();
+    void arreterDiapo();
 };
 #endif // LECTEURVUE_H
