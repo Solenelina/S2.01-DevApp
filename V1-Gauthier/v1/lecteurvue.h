@@ -23,5 +23,9 @@ public slots :
     void suivant();
     void demarrerDiapo();
     void arreterDiapo();
+    void fermerFenetre();
+    void aProposDe();
+    void vitesseDefilement();
+    void enleverDiapo();
 };
 #endif // LECTEURVUE_H

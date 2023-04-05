@@ -15,6 +15,14 @@ LecteurVue::LecteurVue(QWidget *parent)
                      this, SLOT(demarrerDiapo()));
     QObject::connect(ui->bArreterDiapo, SIGNAL(clicked()),
                      this, SLOT(arreterDiapo()));
+    QObject::connect(ui->actionQuitter, SIGNAL(triggered()),
+                     this, SLOT(fermerFenetre()));
+    QObject::connect(ui->actionAProposDe, SIGNAL(triggered()),
+                     this, SLOT(aProposDe()));
+    QObject::connect(ui->actionEnleverLeDiaporama, SIGNAL(triggered()),
+                     this, SLOT(enleverDiapo()));
+    QObject::connect(ui->actionVitesseDeDefilement, SIGNAL(triggered()),
+                     this, SLOT(vitesseDefilement()));
 }
 
 LecteurVue::~LecteurVue()
@@ -40,4 +48,24 @@ void LecteurVue::demarrerDiapo()
 void LecteurVue::arreterDiapo()
 {
     qDebug()<<"J'arrete le diaporama" << Qt::endl;
+}
+
+void LecteurVue::fermerFenetre()
+{
+    qDebug() <<"Je ferme la fenêtre" << Qt::endl;
+}
+
+void LecteurVue::aProposDe()
+{
+    qDebug()<<"J'affiche les informations de l'application" << Qt::endl;
+}
+
+void LecteurVue::vitesseDefilement()
+{
+    qDebug() << "Je modifie la vitesse de défilement du diaporama" << Qt::endl;
+}
+
+void LecteurVue::enleverDiapo()
+{
+    qDebug() << "J'enlève le diaporama" << Qt::endl;
 }
