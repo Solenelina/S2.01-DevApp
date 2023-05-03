@@ -8,6 +8,13 @@ LecteurVue::LecteurVue(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Initialisation en mode manuel
+    ui->statusbar->showMessage("Mode MANUEL");
+
+    // Blocage du bouton arrêt diapo, car mode manuel initié
+    ui->bArreterDiapo->setEnabled(false);
+
+    // Connexion des boutons
     QObject::connect(ui->bSuivant , SIGNAL(clicked()),
                      this, SLOT(suivant()));
     QObject::connect(ui->bPrecedent, SIGNAL(clicked()),
@@ -24,9 +31,8 @@ LecteurVue::LecteurVue(QWidget *parent)
                      this, SLOT(enleverDiapo()));
     QObject::connect(ui->actionVitesseDeDefilement, SIGNAL(triggered()),
                      this, SLOT(vitesseDefilement()));
-
-    // Affichage d'un message dans la barre de statut
-    ui->statusbar->showMessage("Test");
+    QObject::connect(ui->actionCharger_le_diaporama,SIGNAL(triggered()),
+                     this, SLOT(chargerDiaporama()));
 }
 
 LecteurVue::~LecteurVue()
@@ -37,21 +43,34 @@ LecteurVue::~LecteurVue()
 void LecteurVue::suivant()
 {
     qDebug() << "J'affiche l'image suivant" << Qt::endl;
+    ui->statusbar->showMessage("Mode MANUEL");
+    ui->bArreterDiapo->setEnabled(false);
+    avancer();
+    afficher();
 }
 
 void LecteurVue::precedent()
 {
     qDebug() << "J'affiche l'image précédente" << Qt::endl;
+    ui->statusbar->showMessage("Mode MANUEL");
+    ui->bArreterDiapo->setEnabled(false);
+    reculer();
+    afficher();
 }
 
 void LecteurVue::demarrerDiapo()
 {
     qDebug()<<"Je démarre le diaporama" << Qt::endl;
+    ui->statusbar->showMessage("Mode AUTOMATIQUE");
+    ui->bArreterDiapo->setEnabled(true);
+    afficher();
 }
 
 void LecteurVue::arreterDiapo()
 {
     qDebug()<<"J'arrete le diaporama" << Qt::endl;
+    ui->statusbar->showMessage("Mode MANUEL");
+    ui->bArreterDiapo->setEnabled(false);
 }
 
 void LecteurVue::fermerFenetre()
@@ -74,18 +93,19 @@ void LecteurVue::vitesseDefilement()
 void LecteurVue::enleverDiapo()
 {
     qDebug() << "J'enlève le diaporama" << Qt::endl;
+    viderDiaporama();
 }
 
 /* ==========================
  *  Fonctionnalité de lecteur
  *  =========================*/
 
-Lecteur::Lecteur()
+void LecteurVue::initLecteur()
 {
     _numDiaporamaCourant = 0;   // =  le lecteur est vide
 }
 
-void Lecteur::avancer()
+void LecteurVue::avancer()
 {
     if ((*this)._posImageCourante >= nbImages()-1)
     {
@@ -97,7 +117,7 @@ void Lecteur::avancer()
     }
 }
 
-void Lecteur::reculer()
+void LecteurVue::reculer()
 {
     if ((*this)._posImageCourante <= 0)
     {
@@ -109,7 +129,7 @@ void Lecteur::reculer()
     }
 }
 
-void Lecteur::changerDiaporama(unsigned int pNumDiaporama)
+void LecteurVue::changerDiaporama(unsigned int pNumDiaporama)
 {
     // s'il y a un diaporama courant, le vider, puis charger le nouveau Diaporama
     if (numDiaporamaCourant() > 0)
@@ -124,19 +144,20 @@ void Lecteur::changerDiaporama(unsigned int pNumDiaporama)
 
 }
 
-void Lecteur::chargerDiaporama()
+void LecteurVue::chargerDiaporama()
 {
     /* Chargement des images associées au diaporama courant
        Dans une version ultérieure, ces données proviendront d'une base de données,
        et correspondront au diaporama choisi */
+    _numDiaporamaCourant=1;
     Image* imageACharger;
-    imageACharger = new Image(3, "personne", "Blanche Neige", "C:\\cartesDisney\\carteDisney2.gif");
+    imageACharger = new Image(3, "voiture de sport", "Alpine A110", "F://cours-tp/SAE/S2/s201_DeveloppementApplication/V2-Gauthier/imageDiapo/alpineRouge.jpg");
     _diaporama.push_back(imageACharger);
-    imageACharger = new Image(2, "personne", "Cendrillon", "C:\\cartesDisney\\carteDisney4.gif");
+    imageACharger = new Image(2, "voiture de collection", "Aston Martin", "F://cours-tp/SAE/S2/s201_DeveloppementApplication/V2-Gauthier/imageDiapo/astonMartin.jpg");
     _diaporama.push_back(imageACharger);
-    imageACharger = new Image(4, "animal", "Mickey", "C:\\cartesDisney\\carteDisney1.gif");
+    imageACharger = new Image(4, "voiture de collection", "Ferrari Enzo", "F://cours-tp/SAE/S2/s201_DeveloppementApplication/V2-Gauthier/imageDiapo/ferrariEnzo.jpg");
     _diaporama.push_back(imageACharger);
-    imageACharger = new Image(1, "personne", "Grincheux", "C:\\cartesDisney\\carteDisney1.gif");
+    imageACharger = new Image(1, "4x4", "Mercedes classe G", "C");
     _diaporama.push_back(imageACharger);
 
 
@@ -155,10 +176,9 @@ void Lecteur::chargerDiaporama()
 
      cout << "Diaporama num. " << numDiaporamaCourant() << " selectionne. " << endl;
      cout << nbImages() << " images chargees dans le diaporama" << endl;
-
 }
 
-void Lecteur::viderDiaporama()
+void LecteurVue::viderDiaporama()
 {
     if (nbImages () > 0)
     {
@@ -175,7 +195,7 @@ void Lecteur::viderDiaporama()
 
 }
 
-void Lecteur::afficher()
+void LecteurVue::afficher()
 {
      // affiche les information sur le lecteur :
      if (numDiaporamaCourant() != 0)
@@ -189,20 +209,21 @@ void Lecteur::afficher()
      else
      {
          cout << "Diaporama Vide" << endl;
+         cout << numDiaporamaCourant();
      }
 }
 
-unsigned int Lecteur::nbImages()
+unsigned int LecteurVue::nbImages()
 {
     return _diaporama.size();
 }
 
-Image *Lecteur::imageCourante()
+Image *LecteurVue::imageCourante()
 {
     return _diaporama[_posImageCourante];
 }
 
-unsigned int Lecteur::numDiaporamaCourant()
+unsigned int LecteurVue::numDiaporamaCourant()
 {
     return _numDiaporamaCourant;
 }

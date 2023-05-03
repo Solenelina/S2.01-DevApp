@@ -23,6 +23,9 @@ LecteurVue::LecteurVue(QWidget *parent)
                      this, SLOT(enleverDiapo()));
     QObject::connect(ui->actionVitesseDeDefilement, SIGNAL(triggered()),
                      this, SLOT(vitesseDefilement()));
+
+    // Affichage d'un message dans la barre de statut
+    ui->statusbar->showMessage("Test");
 }
 
 LecteurVue::~LecteurVue()

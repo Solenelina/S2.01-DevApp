@@ -31,20 +31,11 @@
        </spacer>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,0,0,1,0">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,1,0">
         <item>
-         <widget class="QFrame" name="frame">
-          <property name="minimumSize">
-           <size>
-            <width>200</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
+         <widget class="QLabel" name="lPhoto">
+          <property name="text">
+           <string>TextLabel</string>
           </property>
          </widget>
         </item>
@@ -177,6 +168,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionVitesseDeDefilement"/>
     <addaction name="actionEnleverLeDiaporama"/>
+    <addaction name="actionCharger_le_diaporama"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -207,6 +199,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionEnleverLeDiaporama">
    <property name="text">
     <string>Enlever le diaporama</string>
+   </property>
+  </action>
+  <action name="actionCharger_le_diaporama">
+   <property name="text">
+    <string>Charger le diaporama</string>
    </property>
   </action>
  </widget>
