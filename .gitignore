@@ -1,0 +1,4 @@
+# Fichier à ignorer lors des commits
+v0_version_console_pourEtudiant/build-lecteurDiaporama-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/*
+V1-Gauthier/build-lecteurDiaporama-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/*
+V2-Gauthier/build-v1-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/*
